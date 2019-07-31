@@ -1,5 +1,4 @@
 const net = require('net');
-
 /**
  * Establishes connection with the game server
  */
@@ -8,16 +7,15 @@ const connect = function() {
     host: '10.0.2.15',
     port: 50541
   });
-  // interpret incoming data as text
+  conn.on('connect', function() {
+    console.log('Successfully connected to game server')
+    conn.write("Name: AHM")
+  }) 
+  conn.on('data', function(message) {
+    console.log('From Server', message)
+  }) 
   conn.setEncoding('utf8'); 
-  conn.on('data', (data) => {
-    console.log('Server says: ', data);
-  });
-
-
-
-
+  
   return conn;
 }
-
-module.exports ={connect}
+module.exports = {connect}
