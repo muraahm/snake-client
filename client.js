@@ -1,4 +1,8 @@
 const net = require('net');
+const input = require('net');
+const { setupInput }= require('./input');
+
+
 /**
  * Establishes connection with the game server
  */
@@ -9,7 +13,9 @@ const connect = function () {
   });
   conn.on('connect', function () {
     console.log('Successfully connected to game server')
+    setupInput(conn)
     conn.write("Name: AHM")
+    
     // conn.write("Move: up")
     // setTimeout(() => {
     //   conn.write("Move: up");
@@ -23,4 +29,5 @@ const connect = function () {
 
   return conn;
 }
+
 module.exports = { connect }
