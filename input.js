@@ -15,6 +15,13 @@ const handleUserInput = function (data) {
   if (data === "s") {
     connection.write("Move: down")
   }
+  if (data === "m") {
+    connection.write("Say: move move move")
+  }
+  if (data === "n") {
+    connection.write("Say: nitro")
+  }
+
   if (data === '\u0003') {
     process.exit();
   }
